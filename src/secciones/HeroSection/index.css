@@ -1,0 +1,26 @@
+.home-size {
+    height: 100vh;
+    width: 100%;
+}
+
+.video-home {
+    object-fit: cover;
+    object-position: top;
+}
+
+.slider-image-home {
+    width: 100%;
+    object-fit: cover;
+}
+
+.swiper-button-prev:after,
+.swiper-button-next:after {
+    font-family: swiper-icons;
+    font-size: 2rem;
+    font-weight: 800;
+    text-transform: none !important;
+    letter-spacing: 0;
+    font-variant: initial;
+    line-height: 1;
+    color: var(--primary);
+}
