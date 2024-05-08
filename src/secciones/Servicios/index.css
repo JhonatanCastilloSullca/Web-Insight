@@ -32,14 +32,29 @@
 }
 
 .heading-section .subheading {
-    font-size: 30px;
+    font-size: 35px;
     display: block;
-    margin-bottom: 5px;
-    color: var(--primary);
     font-family: 'Source Sans 3', sans-serif;
-    font-weight: 900;
+    font-weight: 600;
 
 }
+
+.small-section-title {
+    font-size: 1rem;
+}
+
+.small-section-title::after {
+    position: absolute;
+    content: "";
+    width: 50px;
+    height: 2px;
+    top: 10px;
+    left: 185px;
+    margin-top: -1px;
+    background: var(--primary);
+}
+
+
 
 
 .heading-section.heading-section-white .subheading {

@@ -76,7 +76,7 @@ function ContactPage() {
                                     <MdMarkEmailRead className='icon-fa' />
                                 </div>
                                 <h3 className="mb-2">{t("contacto.direaccion-email")}</h3>
-                                <p>info@vertigotravelperu.com</p>
+                                <p>info@cuscoinsight.com</p>
                             </div>
                         </Col>
                     </Row>

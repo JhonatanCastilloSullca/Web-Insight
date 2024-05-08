@@ -8,7 +8,7 @@ export function useFetch(url, options = {}) {
     useEffect(() => {
         const headers = {
             'Content-Type': 'application/json',
-            ...options.token && { 'Authorization': `Bearer ${options.token}` },
+            'Authorization': `Bearer ${import.meta.env.VITE_REACT_API_KEY}`,
         };
 
         const fetchOptions = {

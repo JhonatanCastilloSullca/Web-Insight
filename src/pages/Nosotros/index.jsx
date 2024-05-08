@@ -51,7 +51,7 @@ function NosotrosPage() {
                                 <div className="w-100 d-flex justify-content-between align-items-center gap-4 pt-2 px-4 border border-4 rounded-2">
                                     <FaMedal className="icono-nosotros text-dark" />
                                     <div className="text-nosotros px-2">
-                                        En Vertigo Travel, con orgullo, compartimos que hemos sido galardonados con prestigiosos premios, medallas y certificaciones que respaldan nuestra dedicación a ofrecerte lo mejor en cada viaje
+                                        En Cusco Insight, con orgullo, compartimos que hemos sido galardonados con prestigiosos premios, medallas y certificaciones que respaldan nuestra dedicación a ofrecerte lo mejor en cada viaje
                                     </div>
                                 </div>
                                 <div className="w-100 d-flex justify-content-between align-items-center gap-4 pt-2 px-4 border border-4 rounded-2">

@@ -9,6 +9,7 @@ import { Autoplay, Navigation } from 'swiper/modules';
 import { useFetch } from '../../Hook/useFetch';
 import { GeneralContext } from '../../context/general';
 import { useContext } from 'react';
+import { Container } from 'react-bootstrap';
 function HeroSection() {
 
 
@@ -16,7 +17,7 @@ function HeroSection() {
     const cabeceraTipo = GeneralData.cabecera[1].tipo;
     return (
         <>
-            <div className='w-100 relative'>
+            <div className='w-100 position-relative'>
                 {cabeceraTipo == 0 ? (
                     <video src="./VertigoVideo.mp4" autoPlay loop muted className='video-home home-size'></video>
                 ) : (
@@ -36,6 +37,15 @@ function HeroSection() {
                         ))}
                     </Swiper>
                 )}
+                <div className="text-hero">
+                    <Container>
+                        <div className="sub-title"><span className="tagline">Vamos a explorar</span></div>
+                        <div className='text-title-hero'>
+                            ¿A dónde te gustaría ir?
+                        </div >
+                        <div className="title-desc">Consulte lugares hermosos alrededor del Perú.</div>
+                    </Container>
+                </div>
             </div>
         </>
     )

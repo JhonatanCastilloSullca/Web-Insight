@@ -14,8 +14,8 @@ function Home() {
         <>
             <HeroSection />
             <Search />
-            <Servicios />
             <Destinos />
+            <Servicios />
             <Tours />
             <Parallax />
             <About />

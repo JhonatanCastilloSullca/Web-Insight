@@ -4,10 +4,11 @@
     width: 100% !important;
     position: fixed !important;
     top: 0 !important;
+    padding: 0;
 }
 
 .navbar.active {
-    background: linear-gradient(180deg, #059d0ac7 0%, #059d0a 100%) !important
+    background: linear-gradient(180deg, #f79633c7 0%, #f79633 100%) !important
 }
 
 .navbar-logo {
@@ -51,15 +52,15 @@
     list-style: none !important;
 }
 
+
+
 .nav-item>.nav-link {
+    height: 50px;
     font-size: 15px !important;
-    padding-top: 1.5rem !important;
-    padding-bottom: 1.5rem !important;
-    padding-left: 20px !important;
-    padding-right: 20px !important;
     color: #fff !important;
     font-weight: 500 !important;
     opacity: 1 !important;
+    align-content: center;
 }
 
 .nav-links {
@@ -318,6 +319,10 @@ button.nav-link {
     height: auto;
 }
 
+.img-size {
+    height: 58px;
+}
+
 
 
 
@@ -335,6 +340,8 @@ button.nav-link {
 
 .img-menu {
     border-radius: 30px !important;
+    height: 350px !important;
+    object-fit: cover;
 }
 
 
