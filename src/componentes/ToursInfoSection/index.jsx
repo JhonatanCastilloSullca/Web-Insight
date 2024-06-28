@@ -6,11 +6,11 @@ import { IoTimerSharp } from "react-icons/io5";
 
 function ToursInfoSection({ titulo, duracion, precio, categoria }) {
     return (
-        <Row className="info-row">
-            <Col md={5} className=" d-flex align-items-center justify-content-center">
-                <h2 className="subheading-tours font-weight-bold text-light">{titulo}</h2>
+        <Row className="info-row p-2">
+            <Col md={7} className=" d-flex align-items-center justify-content-center">
+                <h2 className="subheading-tours m-0 font-weight-bold text-light">{titulo}</h2>
             </Col>
-            <Col md={7}>
+            <Col md={5} className='px-4'>
                 <Row>
                     <Col>
                         <InfoItem icono={<IoTimerSharp />} titulo="Duración" contenido={duracion + " Dia(s)"} />
@@ -34,7 +34,7 @@ function InfoItem({ icono, titulo, contenido }) {
                 <span className="icono-check-white h2">{icono}</span>
             </div>
             <div className="icono-diarios-text">
-                <p className="m-0"><b>{titulo}</b></p>
+                <p className="m-0 text-primary text-tour-page-descriptions"><b>{titulo}</b></p>
                 <span>{contenido}</span>
             </div>
         </div>

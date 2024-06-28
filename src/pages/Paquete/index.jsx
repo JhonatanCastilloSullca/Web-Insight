@@ -13,7 +13,7 @@ import { useTranslation } from "react-i18next";
 function PaquetePage() {
     const { t } = useTranslation();
     const { general: GeneralData } = useContext(GeneralContext);
-    const cabeceraTipo = GeneralData.certificados[0];
+    const cabeceraTipo = GeneralData.certificados;
 
 
     const params = useParams();
@@ -24,7 +24,7 @@ function PaquetePage() {
         method: 'POST',
 
     };
-    const { data: paqueteData, loading, error } = useFetch(`http://192.168.1.9/api/ubicacion-slug?language_id=1&slug=${paqueteSlug}`, requestOptions);
+    const { data: paqueteData, loading, error } = useFetch(`http://192.168.1.26/api/ubicacion-slug?language_id=1&slug=${paqueteSlug}`, requestOptions);
 
 
 
@@ -90,7 +90,7 @@ function PaquetePage() {
                             Cada uno de nuestros recorridos está dirigido por guías certificados y experimentados que le acompañarán en el reconocido Trek a Machu Picchu a través de las rutas del Camino Salkantay y el Camino Inca. Ya sea que viaje con un pequeño grupo de entusiastas de la aventura o con un círculo cercano de familiares y amigos, nuestro equipo a tiempo completo está disponible las 24 horas, siempre dispuesto a proporcionarle todo lo necesario para una experiencia inolvidable.</p>
                     </div>
                     <Row className="mt-4">
-                        {paqueteData?.tours && <CardTours tours={paqueteData.tours} />}
+                        {paqueteData?.tours && <CardTours tours={paqueteData.tours} md={4} />}
                     </Row>
                 </Container>
             </div>

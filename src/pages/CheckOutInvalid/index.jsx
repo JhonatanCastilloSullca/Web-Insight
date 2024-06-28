@@ -17,13 +17,13 @@ function CheckOutInvalid() {
     const { clearCart } = useCart();
     const { general } = useContext(GeneralContext);
     const GeneralData = general.nosotros;
-    const cabeceraTipo = general.certificados[0];
+    const cabeceraTipo = general.certificados;
     const requestOptions = {
         method: 'POST',
         body: JSON.stringify({
         })
     };
-    const { data, loading, error } = useFetch(`http://192.168.1.9/api/confirmar-pago?id=${id}`, requestOptions);
+    const { data, loading, error } = useFetch(`http://192.168.1.26/api/confirmar-pago?id=${id}`, requestOptions);
 
     const blogs = data;
     if (loading) return <div className="mainloader">

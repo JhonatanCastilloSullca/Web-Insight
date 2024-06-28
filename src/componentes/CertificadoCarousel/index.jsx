@@ -32,7 +32,7 @@ function CertificadoCarousel({ general }) {
                     centeredSlides={true}
                     grabCursor={true}
                     autoplay={{
-                        delay: 500,
+                        delay: 10500,
                         disableOnInteraction: false,
                         pauseOnMouseEnter: true,
                     }}
@@ -57,12 +57,12 @@ function CertificadoCarousel({ general }) {
                     className="mySwiperDestiny"
                 >
                     {
-                        general.images.map((certificados) => (
+                        general.detalles.map((certificados) => (
                             <SwiperSlide key={certificados.id}>
                                 <img
-                                    src={certificados.nombre}
-                                    className='slider-image-home'
-                                    onClick={() => handleImageClick(certificados.nombre)}
+                                    src={certificados.url}
+                                    className='slider-image-home img-size-certi'
+                                    onClick={() => handleImageClick(certificados.url)}
                                     alt="Nature"
                                 />
                             </SwiperSlide>

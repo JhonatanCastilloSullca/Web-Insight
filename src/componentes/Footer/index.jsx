@@ -1,8 +1,9 @@
 import './index.css'
 import { NavLink } from 'react-router-dom';
-import { FaFacebook } from 'react-icons/fa';
+import { FaFacebook, FaTripadvisor } from 'react-icons/fa';
 import { Row } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
+import { FaEnvelope, FaLocationDot, FaPhone } from 'react-icons/fa6';
 
 function Footer() {
     const { t } = useTranslation();
@@ -20,7 +21,8 @@ function Footer() {
                                 <p>Con los más altos estándares de calidad, ofrecemos una respuesta cálida, rápida y precisa a sus requerimientos para garantizar el éxito de sus programas.
                                 </p>
                                 <ul className="ftco-footer-social list-unstyled float-md-left float-lft">
-                                    <li ><a href="https://www.facebook.com/vertigotravelperuEIRL" className='d-flex justify-content-center align-items-center' ><FaFacebook /></a></li>
+                                    <li ><a href="https://www.facebook.com/cusco.insight/" className='d-flex justify-content-center align-items-center' ><FaFacebook /></a></li>
+                                    <li ><a href="https://www.tripadvisor.com/Attraction_Review-g294314-d17478297-Reviews-Cuzco_Travel-Cusco_Cusco_Region.html" className='d-flex justify-content-center align-items-center' ><FaTripadvisor /></a></li>
                                 </ul>
                             </div>
                         </div>
@@ -61,9 +63,9 @@ function Footer() {
                                 <h2 className="ftco-heading-2">Contactanos</h2>
                                 <div className="block-23 mb-3">
                                     <ul>
-                                        <li><span className="icon fa fa-map-marker"></span><span className="text">C. Plateros 394, Cusco, Perú</span></li>
-                                        <li><span className="icon fa fa-phone"></span><span className="text">+51 990 757 584</span></li>
-                                        <li><span className="icon fa fa-paper-plane"></span><span className="text">info@vertigotravel.com</span></li>
+                                        <li><FaLocationDot className='text-white me-2' /> <span className="text">Cusco, Perú</span></li>
+                                        <li><FaPhone className='text-white me-2' /><span className="text">+51 980 693 523</span></li>
+                                        <li><FaEnvelope className='text-white me-2' /><span className="text">info@cuscoinsight.com</span></li>
                                     </ul>
                                 </div>
                             </div>

@@ -15,7 +15,7 @@ function CardBlogs() {
         })
     };
 
-    const { data, loading, error } = useFetch("http://192.168.1.9/api/tours", requestOptions);
+    const { data, loading, error } = useFetch("http://192.168.1.26/api/tours", requestOptions);
 
     const blogs = data;
     if (loading) return <div className="mainloader">

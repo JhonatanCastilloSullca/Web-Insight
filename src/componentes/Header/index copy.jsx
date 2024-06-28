@@ -35,7 +35,7 @@ function Header() {
         body: JSON.stringify({
         })
     };
-    const { data, loading, error } = useFetch("http://192.168.1.9/api/categorias", requestOptions);
+    const { data, loading, error } = useFetch("http://192.168.1.26/api/categorias", requestOptions);
     const categorias = data;
     window.addEventListener('scroll', changeBackground);
     if (loading) return <div className="mainloader">

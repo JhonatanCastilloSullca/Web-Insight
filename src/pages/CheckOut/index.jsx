@@ -11,15 +11,15 @@ import { FaCreditCard, FaList } from "react-icons/fa6";
 import { MdDelete } from "react-icons/md";
 import PaymentButton from "../../componentes/PaymentButton";
 import { FaShoppingCart, FaUserCircle } from "react-icons/fa";
+import PayPalComponent from "../../componentes/PayPalComponent";
 
 
 function CheckOutPage() {
     const { cart, clearCart, removeFromeCart, updatePax, calculateSubtotal } = useCart();
     const subtotal = calculateSubtotal();
-    const mtoReserva = subtotal / 2;
     const { general } = useContext(GeneralContext);
     const GeneralData = general.nosotros;
-    const cabeceraTipo = general.certificados[0];
+    const cabeceraTipo = general.certificados;
     const paises = general.paises;
     const handleIncrement = (item) => {
         updatePax(item.id, Number(Number(item.pax) + 1), (Number(Number(item.pax) + 1) * Number(item.precio)));
@@ -106,7 +106,7 @@ function CheckOutPage() {
                     cliente: formData,
                     total: subtotal
                 };
-                const response = await fetch('http://192.168.1.9/api/niubiz', {
+                const response = await fetch('http://192.168.1.26/api/paypal-create', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -201,7 +201,7 @@ function CheckOutPage() {
                                                     </div>
                                                 </div>
                                                 <div className="precio-cart-product position-relative ">
-                                                    <h2 className="description-text-precio-tour">S/ {item.price}</h2>
+                                                    <h2 className="description-text-precio-tour">$ {item.price}</h2>
                                                     <h3 className="description-text-fecha-tour">Fecha: {item.fecha}</h3>
                                                     <InputGroup className="mb-3 justify-content-center ">
                                                         <Button variant="outline-secondary" className="btn-left-cart" onClick={() => handleDecrement(item)}>
@@ -226,9 +226,6 @@ function CheckOutPage() {
                                     )}
                                     <div className="d-flex justify-content-end border-bottom m-2">
                                         <h2 className="description-text-subtotal-tour">Subtotal: {subtotal}</h2>
-                                    </div>
-                                    <div className="d-flex justify-content-end border-bottom m-2">
-                                        <h2 className="description-text-subtotal-tour">Monto Reserva: S/ {mtoReserva}</h2>
                                     </div>
                                 </Card.Body>
                                 <Card.Footer className="d-flex justify-content-between align-items-center">
@@ -351,7 +348,18 @@ function CheckOutPage() {
                                             <p><strong>Nombres y Apellidos: </strong>{formData.nombre} </p>
                                             <p><strong>Fecha:</strong> 02/05/2024</p>
                                         </div>
+                                        {isTermsAccepted && paymentData && (
+                                            <div className="d-flex justify-content-center">
+                                                <PayPalComponent
+                                                    cart={cart}
+                                                    formdata={formData}
+                                                    total={subtotal}
+                                                ></PayPalComponent>
+                                            </div>
+                                        )}
                                     </div>
+
+
                                 </Card.Body>
                                 <Card.Footer className="d-flex justify-content-between align-items-center">
                                     <div className="d-flex">
@@ -368,16 +376,6 @@ function CheckOutPage() {
                                             onChange={handleCheckboxChange}
                                         />
                                     </div>
-                                    {isTermsAccepted && paymentData && (
-                                        <PaymentButton
-                                            sessiontoken={paymentData.sessionKey}
-                                            merchantid={paymentData.merchant_id}
-                                            purchasenumber={paymentData.reserva_id}
-                                            amount={paymentData.pago}
-                                            link_js={paymentData.link_js}
-                                            route={paymentData.route}
-                                        />
-                                    )}
                                 </Card.Footer>
                             </Card>
                         )}

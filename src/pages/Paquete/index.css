@@ -59,9 +59,11 @@
 }
 
 .section-description {
-    width: 800px;
+    width: 100%;
     text-align: center;
 }
+
+
 
 
 
@@ -107,4 +109,8 @@
         left: 0;
         bottom: 0;
     }
+
+
+
+
 }

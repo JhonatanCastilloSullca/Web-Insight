@@ -21,7 +21,7 @@ function Tours() {
             language_id: 1
         }
     };
-    const { data, loading, error } = useFetch("http://192.168.1.9/api/tours", requestOptions);
+    const { data, loading, error } = useFetch("http://192.168.1.26/api/tours", requestOptions);
     const ToursData = data;
     if (loading) return <div className="mainloader">
         <div style={{ textAlign: 'center', marginTop: '20px' }}>
@@ -36,7 +36,7 @@ function Tours() {
     if (!ToursData) return <div>{t("buttons.no-se-encontraron")}</div>;
     return (
         <>
-            <div className="ftco-section">
+            <div className="ftco-section pt-0">
                 <div className="container">
                     <div className="row justify-content-center pb-4">
                         <div className="col-md-12 heading-section text-center ">
@@ -45,8 +45,8 @@ function Tours() {
                         </div>
                     </div>
                     <div className="row">
-                        <CardTours tours={getRandomTours(ToursData, 3)} />
-                        <Col >
+                        <CardTours tours={getRandomTours(ToursData, 3)} md={4} />
+                        <Col className='pt-4'>
                             <p className='align-items-center justify-content-center d-flex'>
                                 <NavLink to={`/tours`} className='btn btn-primary py-3 px-4'>
                                     {t("tours.revisa-nuestros-tours")}

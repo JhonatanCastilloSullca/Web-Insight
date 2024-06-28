@@ -24,7 +24,7 @@ function ToursPage() {
     };
 
 
-    const { data: tourData, loading, error } = useFetch(`http://192.168.1.9/api/tour-slug?slug=${tourId}`, requestOptions);
+    const { data: tourData, loading, error } = useFetch(`http://192.168.1.26/api/tour-slug?slug=${tourId}`, requestOptions);
 
     if (loading) return <div className="mainloader">
         <div style={{ textAlign: 'center', marginTop: '20px' }}>
@@ -46,16 +46,47 @@ function ToursPage() {
 
     return (
         <>
-            <div className="hero-wrap js-mediumheight" style={{ backgroundImage: `url('${tourData.imagenprincipal}')` }}>
-                <div className="overlay-real"></div>
-                <div className="container p-3">
-                    <div className="row no-gutters slider-text js-mediumheight align-items-center">
-                        <div className="col-md-7 ">
-                        </div>
-                    </div>
-                </div>
+            <div className="hero-wrap js-mediumheight-tour altura-tours" >
+                <Swiper
+                    modules={[Autoplay, Navigation, Pagination, Scrollbar, A11y]}
+                    spaceBetween={50}
+                    slidesPerView={1}
+                    centeredSlides={false}
+                    grabCursor={true}
+                    loop={true}
+                    navigation={true}
+                    autoplay={{
+                        delay: 1000,
+                        disableOnInteraction: true,
+                    }}
+                    pagination={{
+                        clickable: true,
+                    }}
+                    breakpoints={{
+                        640: {
+                            slidesPerView: 3,
+                            spaceBetween: 10,
+                        },
+                        768: {
+                            slidesPerView: 3,
+                            spaceBetween: 10,
+                        },
+                        1024: {
+                            slidesPerView: 3,
+                            spaceBetween: 10,
+                        },
+                    }}
+                    className="mySwiperDestiny"
+                >
+                    {tourData.images.map(tour => (
+                        <SwiperSlide key={tour.id}>
+                            <img data-lazyloaded="1" src={tour.nombre} width="100%" height="450px" className="img-galery-tour"></img>
+                        </SwiperSlide>
+                    ))}
+                </Swiper>
+
             </div>
-            <Container>
+            <Container className="bg-brown mw-100">
                 <ToursInfoSection
                     titulo={tourData.nombre}
                     duracion={tourData.duracion}
@@ -66,6 +97,49 @@ function ToursPage() {
             <div className="ftco-section services-section pt-4 descriptio-tour-container">
                 <div className="container p-4">
                     <div className="row d-flex">
+
+                        <div className="col-md-8 heading-section">
+                            <div className="w-100">
+                                {tourData.nombre && tourData.descripcion && (
+                                    <Container className="mt-4">
+                                        <h3 className="box-title m-0">{tourData.nombre}</h3>
+                                        <div className="incluye-tours" dangerouslySetInnerHTML={{ __html: tourData.descripcion }}></div>
+                                    </Container>
+                                )}
+                                {detallesTourDias && detallesTourDias.length > 0 && (
+                                    <Container className="mt-4 ">
+                                        <h3 className="box-title m-0">Itinerario</h3>
+                                        <Accordion defaultActiveKey="0" className="pt-4">
+                                            {detallesTourDias && detallesTourDias.map((detalle, index) => (
+                                                <Accordion.Item key={index} eventKey={String(index)}>
+                                                    <Accordion.Header>
+                                                        <h6 className="fw-bold text-primary">Día {index + 1}: {detalle.titulo}</h6>
+                                                    </Accordion.Header>
+                                                    <Accordion.Body>
+                                                        <div className="incluye-tours" dangerouslySetInnerHTML={{ __html: detalle.descripcion }}></div>
+                                                    </Accordion.Body>
+                                                </Accordion.Item>
+                                            ))}
+                                        </Accordion>
+                                    </Container>
+                                )}
+
+                                {tourData.galeria && tourData.galeria.length > 0 && (
+                                    <Container className="mt-4">
+                                        <h3 className="box-title m-0">Galería</h3>
+                                        <Row>
+                                            {tourData.galeria.map((imagenUrl, index) => (
+                                                <Col key={index} md={4} className="d-flex justify-content-center mb-4">
+                                                    <Card className="border-0">
+                                                        <Card.Img variant="top" src={imagenUrl} className="galeria-imagen" />
+                                                    </Card>
+                                                </Col>
+                                            ))}
+                                        </Row>
+                                    </Container>
+                                )}
+                            </div>
+                        </div>
                         <div className="col-md-4">
                             <div className="row gap-4">
                                 <CardFormulario tour={tourData} />
@@ -126,91 +200,12 @@ function ToursPage() {
                                 </Accordion>
                             </div>
                         </div>
-                        <div className="col-md-8 heading-section">
-                            <div className="w-100">
-                                <Swiper
-                                    modules={[Autoplay, Navigation, Pagination, Scrollbar, A11y]}
-                                    spaceBetween={50}
-                                    slidesPerView={1}
-                                    grabCursor={true}
-                                    loop={true}
-                                    navigation={true}
-                                    autoplay={{
-                                        delay: 10000,
-                                        disableOnInteraction: false,
-                                    }}
-                                    pagination={{
-                                        clickable: true,
-                                    }}
-                                    breakpoints={{
-                                        640: {
-                                            slidesPerView: 2,
-                                            spaceBetween: 20,
-                                        },
-                                        768: {
-                                            slidesPerView: 2,
-                                            spaceBetween: 40,
-                                        },
-                                        1024: {
-                                            slidesPerView: 2,
-                                            spaceBetween: 50,
-                                        },
-                                    }}
-                                    className="mySwiperDestiny"
-                                >
-                                    {tourData.images.map(tour => (
-                                        <SwiperSlide key={tour.id}>
-                                            <img data-lazyloaded="1" src={tour.nombre} width="320" height="280" className="img-galery-tour"></img>
-                                        </SwiperSlide>
-                                    ))}
-                                </Swiper>
-
-                                {tourData.nombre && tourData.descripcion && (
-                                    <Container className="mt-4">
-                                        <h3 className="box-title m-0">{tourData.nombre}</h3>
-                                        <div className="incluye-tours" dangerouslySetInnerHTML={{ __html: tourData.descripcion }}></div>
-                                    </Container>
-                                )}
-                                {detallesTourDias && detallesTourDias.length > 0 && (
-                                    <Container className="mt-4 ">
-                                        <h3 className="box-title m-0">Itinerario</h3>
-                                        <Accordion defaultActiveKey="0" className="pt-4">
-                                            {detallesTourDias && detallesTourDias.map((detalle, index) => (
-                                                <Accordion.Item key={index} eventKey={String(index)}>
-                                                    <Accordion.Header>
-                                                        <h6 className="fw-bold text-primary">Día {index + 1}: {detalle.titulo}</h6>
-                                                    </Accordion.Header>
-                                                    <Accordion.Body>
-                                                        <div className="incluye-tours" dangerouslySetInnerHTML={{ __html: detalle.descripcion }}></div>
-                                                    </Accordion.Body>
-                                                </Accordion.Item>
-                                            ))}
-                                        </Accordion>
-                                    </Container>
-                                )}
-
-                                {tourData.galeria && tourData.galeria.length > 0 && (
-                                    <Container className="mt-4">
-                                        <h3 className="box-title m-0">Galería</h3>
-                                        <Row>
-                                            {tourData.galeria.map((imagenUrl, index) => (
-                                                <Col key={index} md={4} className="d-flex justify-content-center mb-4">
-                                                    <Card className="border-0">
-                                                        <Card.Img variant="top" src={imagenUrl} className="galeria-imagen" />
-                                                    </Card>
-                                                </Col>
-                                            ))}
-                                        </Row>
-                                    </Container>
-                                )}
-                            </div>
-                        </div>
                     </div>
                 </div>
                 <Container>
                     <h3 className="box-title m-0">Tours Relacionados</h3>
                     <Row className="pt-4">
-                        <CardTours />
+                        <CardTours md={4} tours={tourData.relacionados} />
                     </Row>
                 </Container>
             </div >

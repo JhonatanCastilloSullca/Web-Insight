@@ -17,7 +17,7 @@ function Destinos() {
             language_id: 1
         }
     };
-    const { data, loading, error } = useFetch("http://192.168.1.9/api/ubicaciones", requestOptions);
+    const { data, loading, error } = useFetch("http://192.168.1.26/api/ubicaciones", requestOptions);
     const GeneralData = data;
     if (loading) return <div className="mainloader">
         <div style={{ textAlign: 'center', marginTop: '20px' }}>
@@ -50,7 +50,7 @@ function Destinos() {
                                 centeredSlides={true}
                                 grabCursor={true}
                                 autoplay={{
-                                    delay: 18000,
+                                    delay: 1800,
                                     disableOnInteraction: false,
                                 }}
                                 pagination={{

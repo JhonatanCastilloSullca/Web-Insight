@@ -56,7 +56,7 @@ function Search() {
             language_id: 1
         }
 
-        fetch("http://192.168.1.9/api/tours", {
+        fetch("http://192.168.1.26/api/tours", {
             method: 'POST',
             headers: headers,
             body: JSON.stringify(body),

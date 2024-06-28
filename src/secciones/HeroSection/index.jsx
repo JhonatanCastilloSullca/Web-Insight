@@ -14,12 +14,12 @@ function HeroSection() {
 
 
     const { general: GeneralData } = useContext(GeneralContext);
-    const cabeceraTipo = GeneralData.cabecera[1].tipo;
+    const cabeceraTipo = GeneralData.cabecera.tipo;
     return (
         <>
             <div className='w-100 position-relative'>
                 {cabeceraTipo == 0 ? (
-                    <video src="./VertigoVideo.mp4" autoPlay loop muted className='video-home home-size'></video>
+                    <video src={GeneralData.cabecera.video} autoPlay loop muted className='video-home home-size'></video>
                 ) : (
                     <Swiper
                         navigation={true}
@@ -30,7 +30,7 @@ function HeroSection() {
                         modules={[Autoplay, Navigation]}
                         className="mySwiper home-size"
                     >
-                        {GeneralData.cabecera[1].images.map((images, index) => (
+                        {GeneralData.cabecera.images.map((images, index) => (
                             <SwiperSlide key={index}>
                                 <img src="https://swiperjs.com/demos/images/nature-1.jpg" className='slider-image-home' />
                             </SwiperSlide>

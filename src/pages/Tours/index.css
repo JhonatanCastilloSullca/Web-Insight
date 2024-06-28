@@ -265,7 +265,7 @@
 }
 
 .img-galery-tour {
-    border-radius: 8px;
+    border-radius: 5px;
 }
 
 .hero-wrap {
@@ -287,4 +287,8 @@
     font-weight: 400;
     font-family: "Poppins", Arial, sans-serif;
 
+}
+
+.altura-tours {
+    margin-top: 115px;
 }

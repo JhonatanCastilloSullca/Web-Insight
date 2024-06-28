@@ -14,7 +14,7 @@ function CartItem({ imagenprincipal, precio, nombre, removeFromeCart }) {
                     <img src={imagenprincipal} className='img-icono-tour-info-related' alt="" />
                     <div className="items-information d-grid">
                         <h5 className="item-description-information m-0 fs-18">{nombre}</h5>
-                        <h5 className="item-tittle-information">S/. <span className="prices-item-information"> {precio} </span></h5>
+                        <h5 className="item-tittle-information">$ <span className="prices-item-information"> {precio} </span></h5>
                     </div>
                 </div>
                 <Button variant="" className="button-cart text-white" onClick={removeFromeCart}>

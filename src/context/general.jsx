@@ -4,15 +4,20 @@ import { DotLoader } from "react-spinners";
 
 export const GeneralContext = createContext();
 export const GeneralProvider = ({ children }) => {
-
+    const languageId = localStorage.lng === 'es' ? 1 : localStorage.lng === 'en' ? 2 : 1;
     const requestOptions = {
         method: 'POST',
         body: {
-            language_id: 1
+            language_id: languageId
         }
     };
-    const { data, loading, error } = useFetch("http://192.168.1.9/api/general", requestOptions);
+    const { data, loading, error } = useFetch("http://192.168.1.26/api/general", requestOptions);
     const general = data;
+
+
+
+
+
 
     if (loading) {
         <>

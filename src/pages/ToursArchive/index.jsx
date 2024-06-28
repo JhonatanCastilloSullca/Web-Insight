@@ -18,8 +18,8 @@ function ToursArchive() {
         }
     };
 
-    const { data: GeneralData, loading: generalLoading, error: generalError } = useFetch("http://192.168.1.9/api/categorias", requestOptions);
-    const { data: tourData, loading: tourLoading, error: tourError } = useFetch("http://192.168.1.9/api/tours", requestOptions);
+    const { data: GeneralData, loading: generalLoading, error: generalError } = useFetch("http://192.168.1.26/api/categorias", requestOptions);
+    const { data: tourData, loading: tourLoading, error: tourError } = useFetch("http://192.168.1.26/api/tours", requestOptions);
 
 
     const [filteredCount, setFilteredCount] = useState(0);
@@ -192,7 +192,7 @@ function ToursArchive() {
                                     {paginationItems}
                                 </ul>
                             </div>
-                            <CardTours tours={paginatedTours} />
+                            <CardTours tours={paginatedTours} md={6} />
                             <div className="mb-3">
                                 <ul className="pagination">
                                     {paginationItems}

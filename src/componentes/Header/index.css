@@ -1,5 +1,4 @@
 .navbar {
-    background-image: linear-gradient(180deg, #000 0%, #FFFFFF00 100%) !important;
     height: 80px !important;
     width: 100% !important;
     position: fixed !important;
@@ -55,12 +54,13 @@
 
 
 .nav-item>.nav-link {
-    height: 50px;
     font-size: 15px !important;
-    color: #fff !important;
+    padding-top: 1.5rem !important;
+    padding-bottom: 1.5rem !important;
+    padding-left: 10px !important;
+    padding-right: 10px !important;
     font-weight: 500 !important;
     opacity: 1 !important;
-    align-content: center;
 }
 
 .nav-links {
@@ -145,7 +145,7 @@
 }
 
 .nav-link {
-    color: var(--dark);
+    /* color: var(--dark); */
 }
 
 .tittle-categoria-header {
@@ -211,6 +211,9 @@ button.nav-link {
 }
 
 .fixed-navbar {
+    height: 145px !important;
+    background-color: var(--dark);
+
     button.nav-link {
         position: fixed;
         font-size: 15px !important;
@@ -320,7 +323,7 @@ button.nav-link {
 }
 
 .img-size {
-    height: 58px;
+    height: 90px;
 }
 
 

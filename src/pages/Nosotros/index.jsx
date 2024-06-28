@@ -27,7 +27,7 @@ function NosotrosPage() {
     }, []);
     const { general } = useContext(GeneralContext);
     const GeneralData = general.nosotros;
-    const cabeceraTipo = general.certificados[0];
+    const cabeceraTipo = general.certificados;
 
     return (
         <>
@@ -42,7 +42,31 @@ function NosotrosPage() {
                     </Row>
                 </Container>
             </div>
-            <About />
+
+            <div className="ftco-section ftco-about ftco-no-pt img mb-2 h-100">
+                <Container>
+                    <Row className="d-flex">
+                        <Col md={12} className="about-intro">
+                            <Row>
+                                <Col md={6} className="d-flex align-items-stretch">
+                                    <div className="img d-flex w-100 align-items-center justify-content-center img-nosotros" style={{ backgroundImage: `url('${GeneralData.image_secundaria}')` }}></div>
+                                </Col>
+                                <Col md={6} className="d-flex flex-column align-items-stretch pt-4">
+                                    <h6 className="section-title text-primary text-uppercase">Nos presentamos</h6>
+                                    <div className="info-nosotros-terms">
+                                        <Row>
+
+                                            <div className="incluye-tours" dangerouslySetInnerHTML={{ __html: GeneralData.descripcion }}></div>
+                                        </Row>
+                                    </div>
+                                </Col>
+                            </Row>
+                        </Col>
+                    </Row>
+                </Container>
+            </div>
+
+
             <div className="ftco-section services-section pt-4 descriptio-tour-container">
                 <Container>
                     <Row>
@@ -50,20 +74,19 @@ function NosotrosPage() {
                             <div className="d-grid gap-4">
                                 <div className="w-100 d-flex justify-content-between align-items-center gap-4 pt-2 px-4 border border-4 rounded-2">
                                     <FaMedal className="icono-nosotros text-dark" />
-                                    <div className="text-nosotros px-2">
-                                        En Cusco Insight, con orgullo, compartimos que hemos sido galardonados con prestigiosos premios, medallas y certificaciones que respaldan nuestra dedicación a ofrecerte lo mejor en cada viaje
+                                    <div className="text-nosotros px-2" dangerouslySetInnerHTML={{ __html: GeneralData.descripcion1 }}>
                                     </div>
                                 </div>
                                 <div className="w-100 d-flex justify-content-between align-items-center gap-4 pt-2 px-4 border border-4 rounded-2">
-                                    <div className="text-nosotros px-2">
-                                        Con guías profesionales graduados y un equipo completamente capacitado, cada viaje con nosotros es una experiencia única y memorable.
+                                    <div className="text-nosotros px-2" dangerouslySetInnerHTML={{ __html: GeneralData.descripcion2 }}>
+
                                     </div>
                                     <FaUserGraduate className="icono-nosotros text-dark" />
                                 </div>
                                 <div className="w-100 d-flex justify-content-between align-items-center gap-4 pt-2 px-4 border border-4 rounded-2">
                                     <FaClockRotateLeft className="icono-nosotros text-dark" />
-                                    <div className="text-nosotros px-2">
-                                        Tu comodidad y tranquilidad son nuestra prioridad, y estamos listos para brindarte el apoyo que necesitas en cualquier momento del día o de la noche. ¡Confía en nosotros para hacer de cada momento una experiencia sin preocupaciones!
+                                    <div className="text-nosotros px-2" dangerouslySetInnerHTML={{ __html: GeneralData.descripcion3 }}>
+
                                     </div>
                                 </div>
                             </div>
@@ -100,24 +123,11 @@ function NosotrosPage() {
                                     }}
                                     className="mySwiperDestiny"
                                 >
-                                    <SwiperSlide >
-                                        <img src="https://media.istockphoto.com/id/903568822/photo/call-center-workers.jpg?s=612x612&w=0&k=20&c=wGoPEMHmgnB7zwGl0pUaWP1nl_S3dOhnFxTNkQQhtiI=" alt="Contacto" className='w-100 border rounded' />
-                                    </SwiperSlide>
-                                    <SwiperSlide >
-                                        <img src="https://media.istockphoto.com/id/903568822/photo/call-center-workers.jpg?s=612x612&w=0&k=20&c=wGoPEMHmgnB7zwGl0pUaWP1nl_S3dOhnFxTNkQQhtiI=" alt="Contacto" className='w-100 border rounded' />
-                                    </SwiperSlide>
-                                    <SwiperSlide >
-                                        <img src="https://media.istockphoto.com/id/903568822/photo/call-center-workers.jpg?s=612x612&w=0&k=20&c=wGoPEMHmgnB7zwGl0pUaWP1nl_S3dOhnFxTNkQQhtiI=" alt="Contacto" className='w-100 border rounded' />
-                                    </SwiperSlide>
-                                    <SwiperSlide >
-                                        <img src="https://media.istockphoto.com/id/903568822/photo/call-center-workers.jpg?s=612x612&w=0&k=20&c=wGoPEMHmgnB7zwGl0pUaWP1nl_S3dOhnFxTNkQQhtiI=" alt="Contacto" className='w-100 border rounded' />
-                                    </SwiperSlide>
-                                    <SwiperSlide >
-                                        <img src="https://media.istockphoto.com/id/903568822/photo/call-center-workers.jpg?s=612x612&w=0&k=20&c=wGoPEMHmgnB7zwGl0pUaWP1nl_S3dOhnFxTNkQQhtiI=" alt="Contacto" className='w-100 border rounded' />
-                                    </SwiperSlide>
-                                    <SwiperSlide >
-                                        <img src="https://media.istockphoto.com/id/903568822/photo/call-center-workers.jpg?s=612x612&w=0&k=20&c=wGoPEMHmgnB7zwGl0pUaWP1nl_S3dOhnFxTNkQQhtiI=" alt="Contacto" className='w-100 border rounded' />
-                                    </SwiperSlide>
+                                    {GeneralData.images.map(tour => (
+                                        <SwiperSlide key={tour.id}>
+                                            <img src={tour.nombre} alt="Contacto" className='w-100 border rounded' />
+                                        </SwiperSlide>
+                                    ))}
                                 </Swiper>
                             </div>
                         </Col>
